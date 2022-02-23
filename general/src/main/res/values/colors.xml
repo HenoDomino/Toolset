@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toast">#444444</color>
+    <color name="dark">#483935</color>
+    <color name="black">#000000</color>
+    <color name="black_80">#CC000000</color>
+    <color name="blue">#1E76FA</color>
+    <color name="light_blue">#E1F0FF</color>
+    <color name="gray_text">#858EAD</color>
+    <color name="status_pink">#FAC7D7</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="almost_white">#E1F0FF</color>
+    <color name="text_dark">#342828</color>
+    <color name="text_light">#FFFEFA</color>
+    <color name="orange">#FC673B</color>
+    <color name="dim_orange">#FCD3C0</color>
+    <color name="dark_blue">#0B1E5C</color>
+    <color name="dark_blue_alpha">#7D0B1E5C</color>
+    <color name="white_alpha">#7DFFFFFF</color>
+</resources>
