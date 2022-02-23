@@ -5,6 +5,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.util.DisplayMetrics
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Converter {
 
@@ -31,4 +34,26 @@ object Converter {
         wrappedDrawable.draw(canvas)
         return bitmap
     }
+
+    fun timeToString(tm: Date): String {
+        val timeFormat = SimpleDateFormat("hh:mm aa", Locale.getDefault())
+        return timeFormat.format(tm)
+    }
+
+    fun parseTime24(s: String): Calendar {
+        val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val cld = Calendar.getInstance()
+        try {
+            val cldTime = Calendar.getInstance()
+            cldTime.time = timeFormat.parse(s)
+            cld.set(Calendar.HOUR_OF_DAY, cldTime.get(Calendar.HOUR_OF_DAY))
+            cld.set(Calendar.MINUTE, cldTime.get(Calendar.MINUTE))
+            cld.set(Calendar.SECOND, 0)
+            cld.set(Calendar.MILLISECOND, 0)
+        } catch (e: Exception) {
+            Blog.e("Time parse 24 error: $e")
+        }
+        return cld
+    }
+
 }
