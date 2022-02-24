@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Toolset.iml" filepath="$PROJECT_DIR$/.idea/modules/Toolset.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/general/Toolset.general.iml" filepath="$PROJECT_DIR$/.idea/modules/general/Toolset.general.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tools/Toolset.tools.iml" filepath="$PROJECT_DIR$/.idea/modules/tools/Toolset.tools.iml" />
     </modules>
   </component>
 </project>

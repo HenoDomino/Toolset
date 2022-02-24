@@ -15,7 +15,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import club.aborigen.general.Blog
 
 abstract class FullActivity: AppCompatActivity() {
 
@@ -28,7 +27,7 @@ abstract class FullActivity: AppCompatActivity() {
                 if(isFullScreen()) {
                     window.insetsController?.hide(WindowInsets.Type.navigationBars())
                     window.insetsController?.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-                } else {
+                } else if(isZeroTop()) {
                     val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
                     val lp = view.layoutParams as ViewGroup.MarginLayoutParams
                     lp.setMargins(0, 0, 0, insets.bottom)
@@ -46,7 +45,7 @@ abstract class FullActivity: AppCompatActivity() {
                         View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-            } else {
+            } else if(isZeroTop()) {
                 window.decorView.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
             }
         }
@@ -95,6 +94,10 @@ abstract class FullActivity: AppCompatActivity() {
                 dismissDialogs(it.childFragmentManager)
             }
         }
+    }
+
+    open fun isZeroTop(): Boolean {
+        return false
     }
 
     open fun isFullScreen(): Boolean {
