@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="general/src/main/res/drawable/bg_context_radius_8.xml" value="0.1" />
         <entry key="general/src/main/res/layout/dialog_context_menu.xml" value="0.1" />
         <entry key="general/src/main/res/layout/view_context_menu_item.xml" value="0.1" />
         <entry key="general/src/main/res/layout/view_top_toolbar.xml" value="0.1" />
