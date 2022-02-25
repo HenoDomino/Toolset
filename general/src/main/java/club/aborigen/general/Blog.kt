@@ -2,23 +2,21 @@ package club.aborigen.general
 
 import android.util.Log
 
-private const val TAG = "ABO"
-
 object Blog {
 
     fun d(str: String) {
-        Log.d(TAG, str)
+        Log.d(Appo.get().TAG, str)
     }
 
     fun i(str: String) {
-        Log.i(TAG, str)
+        Log.i(Appo.get().TAG, str)
     }
 
     fun w(str: String) {
-        Log.w(TAG, str)
+        Log.w(Appo.get().TAG, str)
     }
 
     fun e(str: String) {
-        Log.e(TAG, str)
+        Log.e(Appo.get().TAG, str)
     }
 }

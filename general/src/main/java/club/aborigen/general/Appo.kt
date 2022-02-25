@@ -8,12 +8,12 @@ import androidx.lifecycle.ProcessLifecycleOwner
 class Appo : Application() {
 
     val sharedPreferences: SharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(applicationContext) }
+    val alarmPlayer: AlarmPlayer by lazy { AlarmPlayer(applicationContext) }
+    var TAG = "ABL"
 
     override fun onCreate() {
         super.onCreate()
         _instance = this
-
-        //NotificationUtils.createChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name))
     }
 
     fun isAppVisible(): Boolean {
@@ -21,7 +21,7 @@ class Appo : Application() {
     }
 
     companion object {
-        lateinit var _instance: Appo
+        private lateinit var _instance: Appo
             private set
         fun get(): Appo {
             return _instance
