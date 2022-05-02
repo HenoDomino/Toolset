@@ -20,20 +20,22 @@ abstract class FullActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.setDecorFitsSystemWindows(false)
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { view, windowInsets ->
-                if(isFullScreen()) {
-                    window.insetsController?.hide(WindowInsets.Type.navigationBars())
-                    window.insetsController?.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-                } else if(isZeroTop()) {
-                    val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-                    val lp = view.layoutParams as ViewGroup.MarginLayoutParams
-                    lp.setMargins(0, 0, 0, insets.bottom)
-                    view.layoutParams = lp
+            if(isFullScreen() || isZeroTop()) {
+                window.setDecorFitsSystemWindows(false)
+                ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { view, windowInsets ->
+                    if (isFullScreen()) {
+                        window.insetsController?.hide(WindowInsets.Type.navigationBars())
+                        window.insetsController?.systemBarsBehavior =
+                            WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                    } else if (isZeroTop()) {
+                        val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                        val lp = view.layoutParams as ViewGroup.MarginLayoutParams
+                        lp.setMargins(0, 0, 0, insets.bottom)
+                        view.layoutParams = lp
+                    }
+                    WindowInsetsCompat.CONSUMED
                 }
-                WindowInsetsCompat.CONSUMED
             }
         } else {
             if(isFullScreen()) {
