@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Toolset.iml" filepath="$PROJECT_DIR$/.idea/modules/Toolset.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/general/Toolset.general.iml" filepath="$PROJECT_DIR$/.idea/modules/general/Toolset.general.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/general/Toolset.general.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/general/Toolset.general.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/general/Toolset.general.main.iml" filepath="$PROJECT_DIR$/.idea/modules/general/Toolset.general.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/general/Toolset.general.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/general/Toolset.general.unitTest.iml" />
     </modules>
   </component>
 </project>
