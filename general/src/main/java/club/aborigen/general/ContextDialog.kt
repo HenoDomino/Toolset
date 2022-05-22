@@ -8,7 +8,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class ContextDialog(val resId: Int, val anchor: View, val listener: (item: Int)->Unit) : DialogFragment()  {
+class ContextDialog(val resId: Int, val anchor: View, val selection: Int,
+                    val listener: (item: Int, index: Int)->Unit) : DialogFragment()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,14 +39,7 @@ class ContextDialog(val resId: Int, val anchor: View, val listener: (item: Int)-
         return root
     }
 
-    private inner class ViewHolder internal constructor(inflater: LayoutInflater, parent: ViewGroup)
-        : RecyclerView.ViewHolder(inflater.inflate(R.layout.view_context_menu_item, parent, false)) {
-
-        val icon = itemView.findViewById<ImageView>(R.id.context_menu_item_icon)
-        val title = itemView.findViewById<TextView>(R.id.context_menu_item_text)
-    }
-
-    private inner class ContextMenuAdapter(val menu: Menu) : RecyclerView.Adapter<ViewHolder>() {
+    private inner class ContextMenuAdapter(val menu: Menu) : RecyclerView.Adapter<ContextMenuAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             return ViewHolder(LayoutInflater.from(parent.context), parent)
@@ -54,14 +48,25 @@ class ContextDialog(val resId: Int, val anchor: View, val listener: (item: Int)-
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.icon.setImageDrawable(menu.getItem(position).icon)
             holder.title.text = menu.getItem(position).title
-            holder.itemView.setOnClickListener{
-                listener(menu.getItem(position).itemId)
-                dismiss()
-            }
+            holder.title.isSelected = (selection == position)
         }
 
         override fun getItemCount(): Int {
             return menu.size()
+        }
+
+        private inner class ViewHolder internal constructor(inflater: LayoutInflater, parent: ViewGroup)
+            : RecyclerView.ViewHolder(inflater.inflate(R.layout.view_context_menu_item, parent, false)) {
+
+            val icon = itemView.findViewById<ImageView>(R.id.context_menu_item_icon)
+            val title = itemView.findViewById<TextView>(R.id.context_menu_item_text)
+
+            init {
+                itemView.setOnClickListener{
+                    listener(menu.getItem(adapterPosition).itemId, adapterPosition)
+                    dismiss()
+                }
+            }
         }
     }
 }
