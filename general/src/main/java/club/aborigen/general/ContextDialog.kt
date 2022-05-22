@@ -47,6 +47,7 @@ class ContextDialog(val resId: Int, val anchor: View, val selection: Int,
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.icon.setImageDrawable(menu.getItem(position).icon)
+            holder.icon.isSelected = (selection == position)
             holder.title.text = menu.getItem(position).title
             holder.title.isSelected = (selection == position)
         }
